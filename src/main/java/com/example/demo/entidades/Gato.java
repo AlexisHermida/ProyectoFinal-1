@@ -1,4 +1,4 @@
-package com.example.demo.entidades;
+ package com.example.demo.entidades;
 
 import com.example.demo.enums.Raza;
 import com.example.demo.enums.SexoAnimal;
@@ -29,9 +29,7 @@ public class Gato {
     @Enumerated(EnumType.STRING)
     private Raza raza;
 
-    private Integer anios;
-    
-    private Integer meses;
+    private String edad;
 
     @Enumerated(EnumType.STRING)
     private SexoAnimal sexo;
@@ -58,12 +56,11 @@ public class Gato {
     public Gato() {
     }
 
-    public Gato(String id, String nombre, Raza raza, Integer anios, Integer meses, SexoAnimal sexo, Foto fotoPrincipal, List<Foto> fotos, Usuario usuario, String descripcion, Date creado, Date editado, boolean activo) {
+    public Gato(String id, String nombre, Raza raza, String edad, SexoAnimal sexo, Foto fotoPrincipal, List<Foto> fotos, Usuario usuario, String descripcion, Date creado, Date editado, boolean activo) {
         this.id = id;
         this.nombre = nombre;
         this.raza = raza;
-        this.anios = anios;
-        this.meses = meses;
+        this.edad = edad;
         this.sexo = sexo;
         this.fotoPrincipal = fotoPrincipal;
         this.fotos = fotos;
@@ -74,22 +71,12 @@ public class Gato {
         this.activo = activo;
     }
 
-    
-    
-    public Integer getAnios() {
-        return anios;
+    public String getEdad() {
+        return edad;
     }
 
-    public void setAnios(Integer anios) {
-        this.anios = anios;
-    }
-
-    public Integer getMeses() {
-        return meses;
-    }
-
-    public void setMeses(Integer meses) {
-        this.meses = meses;
+    public void setEdad(String edad) {
+        this.edad = edad;
     }
 
     

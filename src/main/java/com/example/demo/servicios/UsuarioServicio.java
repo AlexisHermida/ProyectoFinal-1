@@ -29,4 +29,16 @@ public class UsuarioServicio {
         }
     }
 
+    public Usuario buscarUsuarioPorIdd(String id) {
+
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+
+        if (respuesta != null) {
+
+            Usuario usuario = respuesta.get();
+            return usuario;
+        } else {
+            return null;
+        }
+    }
 }
