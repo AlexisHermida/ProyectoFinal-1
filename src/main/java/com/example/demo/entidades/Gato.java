@@ -51,12 +51,13 @@ public class Gato {
     @Temporal(TemporalType.TIMESTAMP)
     private Date editado;
 
-    private boolean activo;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date baja;
 
     public Gato() {
     }
 
-    public Gato(String id, String nombre, Raza raza, String edad, SexoAnimal sexo, Foto fotoPrincipal, List<Foto> fotos, Usuario usuario, String descripcion, Date creado, Date editado, boolean activo) {
+    public Gato(String id, String nombre, Raza raza, String edad, SexoAnimal sexo, Foto fotoPrincipal, List<Foto> fotos, Usuario usuario, String descripcion, Date creado, Date editado, Date baja) {
         this.id = id;
         this.nombre = nombre;
         this.raza = raza;
@@ -68,9 +69,18 @@ public class Gato {
         this.descripcion = descripcion;
         this.creado = creado;
         this.editado = editado;
-        this.activo = activo;
+        this.baja = baja;
     }
 
+    public Date getBaja() {
+        return baja;
+    }
+
+    public void setBaja(Date baja) {
+        this.baja = baja;
+    }
+
+ 
     public String getEdad() {
         return edad;
     }
@@ -162,12 +172,6 @@ public class Gato {
         this.editado = editado;
     }
 
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
+ 
 
 }

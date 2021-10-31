@@ -1,6 +1,4 @@
-
 package com.example.demo.entidades;
-
 
 import com.example.demo.enums.PrivilegiosUsuario;
 import com.example.demo.enums.SexoHumano;
@@ -30,12 +28,12 @@ public class Usuario {
     private String apellido;
 
     private Integer edad;
-    
+
     private String numero;
 
     @Enumerated(EnumType.STRING)
     private SexoHumano sexo;
-    
+
     @Column(unique = true)
     private String email;
 
@@ -56,12 +54,13 @@ public class Usuario {
     @Temporal(TemporalType.TIMESTAMP)
     private Date editado;
 
-    private boolean activo;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date baja;
 
     public Usuario() {
     }
 
-    public Usuario(String id, String nombre, String apellido, Integer edad, String numero, SexoHumano sexo, String email, String clave, PrivilegiosUsuario privilegios, Localidad localidad, Foto foto, Date creado, Date editado, boolean activo) {
+    public Usuario(String id, String nombre, String apellido, Integer edad, String numero, SexoHumano sexo, String email, String clave, PrivilegiosUsuario privilegios, Localidad localidad, Foto foto, Date creado, Date editado, Date baja) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -75,8 +74,17 @@ public class Usuario {
         this.foto = foto;
         this.creado = creado;
         this.editado = editado;
-        this.activo = activo;
+        this.baja = baja;
     }
+
+    public Date getBaja() {
+        return baja;
+    }
+
+    public void setBaja(Date baja) {
+        this.baja = baja;
+    }
+
 
     public SexoHumano getSexo() {
         return sexo;
@@ -182,14 +190,6 @@ public class Usuario {
         this.editado = editado;
     }
 
-    public boolean isActivo() {
-        return activo;
-    }
+ 
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
-    
-    
 }

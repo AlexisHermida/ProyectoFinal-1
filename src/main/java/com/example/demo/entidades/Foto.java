@@ -1,16 +1,12 @@
 
 package com.example.demo.entidades;
 
-
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -28,27 +24,18 @@ public class Foto {
     @Basic(fetch = FetchType.LAZY)
     private byte[] contenido;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date creado;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date editado;
-
-    private boolean activo;
 
     public Foto() {
     }
 
-    public Foto(String id, String nombre, String mime, byte[] contenido, Date creado, Date editado, boolean activo) {
+    public Foto(String id, String nombre, String mime, byte[] contenido) {
         this.id = id;
         this.nombre = nombre;
         this.mime = mime;
         this.contenido = contenido;
-        this.creado = creado;
-        this.editado = editado;
-        this.activo = activo;
     }
 
+   
     public String getId() {
         return id;
     }
@@ -81,32 +68,6 @@ public class Foto {
         this.contenido = contenido;
     }
 
-    public Date getCreado() {
-        return creado;
-    }
-
-    public void setCreado(Date creado) {
-        this.creado = creado;
-    }
-
-    public Date getEditado() {
-        return editado;
-    }
-
-    public void setEditado(Date editado) {
-        this.editado = editado;
-    }
-
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-    
-    
-    
-    
+   
 }
 
