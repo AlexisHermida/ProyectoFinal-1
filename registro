@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="E:\Ejercicios Programación\HTML\Pagina\loguito.png">
+    <title>Registro</title>
+    <link rel="stylesheet" type="text/css" href="registro.css">
+</head>
+
+<body>
+
+
+
+    <form class="box" action="#" method="post">
+        <h1>Registro</h1>
+        <input type="text" name="" placeholder="Nombre" maxlength="20"><br> <input type="text" name="" placeholder="Apellido" maxlength="20"><br>
+        <input type="text" name="edad" id="edad" placeholder="Edad" maxlength="3"><br>
+
+        <!-- <select name="Sexo">
+            <option>Elija su Sexo</option>
+            <option>Hombre</option>
+            <option>Mujer</option>
+            <option>Otro</option>
+            </select><br> -->
+
+        <!--<div class="contenedor">
+            <div class="sexo">
+                <label class="F" for="mujer">
+            Mujer
+            </label>
+                <input type="radio" id="mujer" class="Mina">
+            </div>
+        </div> -->
+        <div class="contenedor">
+            <label for="Mujer" class="uno">Mujer</label>
+            <input type="radio" id="Mujer" name="sexo" value="1">
+
+            <label for="hombre" class="uno">Hombre</label>
+            <input type="radio" id="Hombre" name="sexo" value="2">
+
+            <label for="otro" class="uno">Otro</label>
+            <input type="radio" id="Otro" name="sexo" value="3">
+        </div><br>
+
+
+
+        <input type="text" name="telefono" placeholder="(Código de área) Número"><br>
+
+        <input type="text" name="" placeholder="E-Mail"><br>
+
+        <input type="password" name="" placeholder="Contraseña"><br>
+        <input type="password" name="" placeholder="Repetir Contraseña"><br>
+
+        <!-- <select name="Localidad">
+            <option>Hombre</option>
+            <option>Mujer</option>
+            <option>Otro</option>
+            </select><br> -->
+
+        <input type="text" name="cp" placeholder="Código Postal"><br>
+
+        <input type="submit" value="Registar">
+        <input type="reset" value="Limpiar">
+
+
+    </form>
+    <footer>
+        <p><b>© Comisión 13 Egg Programación Rosario - Octubre 2021</b></p>
+
+    </footer>
+
+
+
+
+</body>
