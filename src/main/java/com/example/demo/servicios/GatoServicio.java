@@ -35,7 +35,7 @@ public class GatoServicio {
 
         validar(nombre, raza, sexo, edad);
 
-        Usuario usuario = usuarioServicio.buscarUsuarioPorId(idUsuario);
+        Usuario usuario = usuarioServicio.buscarPorId(idUsuario);
 
         Gato gato = new Gato();
         gato.setNombre(nombre);
@@ -63,7 +63,7 @@ public class GatoServicio {
         
         if (gato != null) {
             
-            Usuario usuario = usuarioServicio.buscarUsuarioPorId(idUsuario);
+            Usuario usuario = usuarioServicio.buscarPorId(idUsuario);
             
             if (usuario != null && gato.getUsuario().getId().equals(usuario.getId())) {
                 

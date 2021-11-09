@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface GatoRepositorio extends JpaRepository<Gato, String> {
     
 /////Query para traer a todos los gatos activos de la página.  
-    @Query("SELECT c FROM Gato c WHERE c.activo = true")
+    @Query("SELECT c FROM Gato c WHERE c.baja is null")
     public List<Gato> listarGatosActivos();
     
     

@@ -1,0 +1,66 @@
+body{
+    background-color: cornsilk;
+}
+
+header{
+    font-family: Bahnschrift;
+    color:darkslategray;
+    border-top: 2px;
+}
+h1{
+    font-size: 90px;
+    position: relative;
+    text-align: center;
+    
+}
+
+h2{
+    margin-left: 3%;
+    font-size: 55px;
+    font-family: Bahnschrift;
+    color: cornsilk;
+}
+
+h3{
+    margin-left: 3%;
+    font-size: 35px;
+    font-family: Bahnschrift;
+    color: cornsilk;
+}
+
+
+form{
+    text-align: center;
+    margin-right: 45%;
+    font-size: 25px;
+    font-family: Bahnschrift;
+    color: cornsilk;
+}
+
+section{
+    background-image: url(https://www.fundacion-affinity.org/sites/default/files/gatos-negros-falsos-mitos-y-creencias.jpg);
+    width: 900px;
+    height: 600px;
+    border-radius: 3%;
+    margin-left: 25%;
+    align-content: center;
+}
+
+
+
+footer{
+    background-color:darkslategrey;
+    margin-top: 70px;
+    text-align: center;  
+}
+a{
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 15px 32px;
+    font-family: Bahnschrift;
+    margin: auto;
+    width: 500px;
+    font-size:  20px;    
+ }
+
+ 

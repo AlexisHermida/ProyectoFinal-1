@@ -1,15 +1,16 @@
 
 package com.example.demo.servicios;
 
-import com.example.demo.Entidades.Foto;
-import com.example.demo.Entidades.Localidad;
-import com.example.demo.Entidades.Usuario;
-import com.example.demo.Errores.ErrorServicio;
-import com.example.demo.Repositorio.LocalidadRepositorio;
-import com.example.demo.Repositorio.UsuarioRepositorio;
+import com.example.demo.entidades.Foto;
+import com.example.demo.entidades.Localidad;
+import com.example.demo.entidades.Usuario;
+
 import java.util.Date;
 import java.util.Optional;
 import javax.transaction.Transactional;
+import com.example.demo.excepciones.ErrorServicio;
+import com.example.demo.repositorios.UsuarioRepositorio;
+import com.example.demo.repositorios.LocalidadRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class UsuarioServicio {
         usuario.setNumero(numero);
         usuario.setEmail(email);
         usuario.setLocalidad(localidad);
-        usuario.setActivo(true);
+        usuario.setCreado(new Date());
         String encriptida=new BCryptPasswordEncoder().encode(clave);
         usuario.setClave(encriptida);
         
@@ -103,7 +104,7 @@ public class UsuarioServicio {
         if (respuesta.isPresent()) {
 
             Usuario usuario = respuesta.get();
-            usuario.setActivo(false);
+            usuario.setBaja(new Date());
             usuarioRepositorio.save(usuario);
         } else {
             throw new ErrorServicio("No se encontro el usuario");
@@ -119,7 +120,7 @@ public class UsuarioServicio {
         if (respuesta.isPresent()) {
 
             Usuario usuario = respuesta.get();
-            usuario.setActivo(true);
+            usuario.setBaja(null);
             usuarioRepositorio.save(usuario);
         } else {
             throw new ErrorServicio("No se encontro el usuario");

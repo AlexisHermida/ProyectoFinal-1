@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>ProyectoFinal</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>ProyectoFinal</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -68,6 +68,12 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>5.5.2</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 
