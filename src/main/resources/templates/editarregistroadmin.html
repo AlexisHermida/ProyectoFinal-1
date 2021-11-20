@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="/logo.ico">
+        <title>Modificacion</title>
+        <link rel="stylesheet" type="text/css" href="/registro.css">
+    </head>
+
+    <body>
+        <header th:replace="fragments/header::nav"></header>    
+        
+   
+        <h1 th:text="${error}" th:if="${error}"></h1>
+        <form class="box" action="/admin/actualizar-usuario" method="POST" enctype="multipart/form-data" th:object="${usuario}">
+            <h1>Vista administracion - Modificacion de perfil de usuario</h1>
+            
+            <input type="hidden" th:field="*{id}">
+            
+            <input type="text" placeholder="Nombre" maxlength="20" th:field="*{nombre}"><br> 
+            <input type="text"  placeholder="Apellido" maxlength="20" th:field="*{apellido}"><br>
+            <input type="number"  id="edad" placeholder="Edad" maxlength="3" th:field="*{edad}"><br>
+            <input type="text"  placeholder="Nombre de usuario" maxlength="20" th:field="*{username}"><br>
+
+            <input type="text" placeholder="(Código de área) Número" th:field="*{numero}"><br>
+            <input type="file" name="archivo"><br>
+
+            <input type="text" placeholder="E-Mail" th:field="*{email}"><br>
+
+            <label>Localidad</label>
+            <select th:field="*{localidad}"> 
+                <option th:each="localidad : ${localidades}" th:value="${localidad.id}" th:text="${localidad.nombre}"  th:selected="${localidad != null && localidad.id == usuario.localidad.id}"></option>
+            </select>
+
+            
+            <input type="submit" value="Modificar usuario">
+            <input type="reset" value="Limpiar">
+
+
+        </form>
+
+
+       
+
+
+    </body>

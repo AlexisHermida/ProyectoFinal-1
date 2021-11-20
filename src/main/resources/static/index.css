@@ -1,0 +1,119 @@
+body{
+    background-image: url(index.jpeg);
+    margin: 0%;
+    padding: 0%;
+    background-position: center;  
+    background-size: cover;
+    height: 100vh;
+    font-family: bahnschrift;
+}
+
+.BotonNav{
+    font-family: bahnschrift;
+    color: whitesmoke;
+    background-color:seagreen;
+    font-size: 20px;
+    border: none;
+    padding: 25px 32px;
+    text-decoration: none;
+}
+.BotonNav{
+    transition-duration: 0.4s;
+}
+.BotonNav:hover{
+    background-color:teal;
+}
+header{
+    background-color:seagreen;
+    text-align: center;
+}
+
+
+
+h3{
+    font-family: bahnschrift;
+    color: whitesmoke;
+    margin-top: 5%;
+    text-align: center;
+    font-size: 35px;
+    text-shadow: -4px 3px 0 black; 
+}
+h1{
+    font-family: bahnschrift;
+    color: whitesmoke; 
+    margin: 0%;
+    text-align: center;
+    text-shadow: -4px 3px 0 black; 
+    font-size: 100px;
+}
+h4{
+    font-family: bahnschrift;
+    color: whitesmoke;
+    margin: 0%;
+    text-align: center;
+    text-shadow: -4px 3px 0 black; 
+    font-size: 20px;
+}
+
+
+
+.Opciones{
+    background-color: rgba(0, 0, 0, 0.21);
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 6%;
+}
+
+.BT{
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    border-radius: 6%;
+    margin-top: 4%;
+    margin-bottom: 20px;
+}
+
+.BT:hover{
+    background-color:teal;
+}
+
+
+footer{
+    margin-top: 12%;
+    background: rgba(0, 0, 0, 0.5);
+    background-image: url(logo.ico);
+    color: white;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: 110px;
+}
+.FlexFoot{
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: rgba(0, 0, 0, 0.021);
+    margin: 15px;
+}
+
+.BotonFoot{
+    font-family: bahnschrift;
+    color: whitesmoke;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.021);
+    margin-left: 7%;
+    font-size: 30px;
+    margin-right: none;
+    width: 160px;
+}
+.BotonFoot:hover{
+    background-color:rgba(0, 0, 0, 0.267);
+}
+
+.FlexFoot >div{
+    margin-left: 5%;
+}
+
+
