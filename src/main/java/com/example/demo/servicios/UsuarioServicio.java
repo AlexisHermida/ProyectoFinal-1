@@ -316,14 +316,10 @@ public class UsuarioServicio implements UserDetailsService {
     
 /////Metodo para modificar perfiles de usuarios desde la vista de un admin
     @Transactional
-    public void modificarAdmin(MultipartFile archivo, String username, String idUsuario, String nombre, String edad, String numero, String apellido, String email, String idLocalidad) throws ErrorServicio {
+    public void modificarAdmin(MultipartFile archivo, String idUsuario, String nombre, String edad, String numero, String apellido, String idLocalidad) throws ErrorServicio {
 
         Localidad localidad = localidadRepositorio.getOne(idLocalidad);
 
-        if (username == null || username.isEmpty()) {
-            throw new ErrorServicio("El nombre de usuario no puede ser nulo.");
-        }
-        
         if (edad == null || edad.trim().isEmpty()) {
             throw new ErrorServicio("La edad no puede ser nula");
         }
@@ -336,10 +332,7 @@ public class UsuarioServicio implements UserDetailsService {
             throw new ErrorServicio("El numero de telefono no puede ser nulo.");
         }
      
-        if (usuarioRepositorio.buscarUsuarioPorUsername(username) != null) {
-            throw new ErrorServicio("El nombre de usuario ingresado ya existe.");
-        }
-
+      
         if (nombre == null || nombre.isEmpty()) {
             throw new ErrorServicio("El nombre del usuario no puede ser nulo.");
         }
@@ -348,14 +341,7 @@ public class UsuarioServicio implements UserDetailsService {
             throw new ErrorServicio("El apellido del usuario no puede ser nulo.");
         }
 
-        if (email == null || email.isEmpty()) {
-            throw new ErrorServicio("El email del usuario no puede ser nulo.");
-        }
-
-        if (usuarioRepositorio.buscarUsuarioPorEmail(email) != null) {
-            throw new ErrorServicio("El email ingresado ya existe.");
-        }
-
+       
         if (localidad == null) {
             throw new ErrorServicio("No ha ingresado una localidad valida.");
         }
@@ -368,7 +354,6 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setEdad(edad);
             usuario.setNumero(numero);
             usuario.setApellido(apellido);
-            usuario.setEmail(email);
             usuario.setPrivilegios(PrivilegiosUsuario.USER);
             usuario.setLocalidad(localidad);
 

@@ -156,7 +156,7 @@ public class AdminControlador {
 
         try {
 
-            usuarioServicio.modificarAdmin(archivo, usuario.getUsername(), usuario.getId(), usuario.getNombre(), usuario.getEdad(), usuario.getNumero(), usuario.getApellido(), usuario.getEmail(), usuario.getLocalidad().getId());
+            usuarioServicio.modificarAdmin(archivo, usuario.getId(), usuario.getNombre(), usuario.getEdad(), usuario.getNumero(), usuario.getApellido(), usuario.getLocalidad().getId());
             return "redirect:/admin/lista-usuarios";
 
         } catch (ErrorServicio e) {
