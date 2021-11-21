@@ -64,7 +64,7 @@ public class GatoControlador {
         try {
             Gato gato = gatoServicio.buscarGatoPorId(id);
             model.put("gato", gato);
-            return "gato_vista.html";
+            return "perfilgato.html";
         } catch (ErrorServicio ex) {
             model.addAttribute("error", ex.getMessage());
             return "index.html";

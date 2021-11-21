@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/logo.ico">
+        <link rel="stylesheet" type="text/css" href="/perfilgato.css">
+        <title>Patitas - Perfil del gato</title>
+    </head>
+    
+    <body>
+        <header th:replace="fragments/header::nav"></header>
+
+        <h1 th:if="${gato != null}" th:text="${gato.nombre}" ></h1>
+
+        <div class="Cuadro">
+            <br>
+            <div class="FotosGatos" th:each="foto : ${FotosGatos}">
+                <img th:if="${foto == null}" class="Gato" src="/GATO.jpg" alt="generico">
+                <img th:if="${foto != null}" class="img-fluid rounded-circle" th:src="@{'/foto/gato/' + foto.id}">
+            </div>
+        
+        <button class="f1"></button> <button class="f1"></button> <button class="f1"></button> <button class="f1"></button> <button class="f1"></button>
+        
+        </div>   
+
+        <button class="Adoptar">ADOPTAME!</button>
+
+        <footer th:replace="fragments/footer::footer"></footer>
+    </body>
+</html>

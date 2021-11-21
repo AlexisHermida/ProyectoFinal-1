@@ -1,6 +1,7 @@
 <footer th:fragment="footer" >
     <div class=FlexFoot>
-        <div><button class="BotonFoot" role="link" onclick="window.location='/'">INICIO</button>
+        <div>
+            <button class="BotonFoot" role="link" onclick="window.location='/'">INICIO</button>
             <button th:if="${session.usuariosession == null}" class="BotonFoot" role="link" onclick="window.location='/registro'">REGISTRO</button><br>
             <button th:if="${session.usuariosession != null}" class="BotonFoot">MI PERFIL</button>
             <button class="BotonFoot">CONTACTO</button></div>
