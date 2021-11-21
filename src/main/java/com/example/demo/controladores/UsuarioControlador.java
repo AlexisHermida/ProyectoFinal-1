@@ -102,10 +102,12 @@ public class UsuarioControlador {
         try {
             Usuario usuario = usuarioServicio.buscarUsuarioPorId(id);
             model.addAttribute("perfil", usuario);
+            model.addAttribute("sexoNumero", usuarioServicio.obtenerSexo(usuario));
 
             List<Localidad> localidades = localidadServicio.listarLocalidades();
             
             model.put("localidades", localidades);
+            model.put("accion", "Actualizar");
 
             return "registro.html";
         } catch (ErrorServicio e) {
@@ -143,6 +145,7 @@ public class UsuarioControlador {
             modelo.put("localidad", localidades);
             modelo.put("error", e.getMessage());
             modelo.put("perfil", usuario);
+            modelo.put("accion", "Actualizar");
             return "registro.html";
         }
 

@@ -49,7 +49,7 @@ public class UsuarioServicio implements UserDetailsService {
 
         Localidad localidad = localidadRepositorio.getOne(idLocalidad);
 
-        validar(username, nombre, numeroSexo, edad, numero, apellido, email, clave, clave2, localidad);
+        validar(username, nombre, numeroSexo, edad, numero, apellido, email, clave, clave2, localidad, false);
 
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
@@ -82,7 +82,7 @@ public class UsuarioServicio implements UserDetailsService {
 
         Localidad localidad = localidadRepositorio.getOne(idLocalidad);
 
-        validar(username, nombre, numeroSexo, edad, numero, apellido, email, clave, clave2, localidad);
+        validar(username, nombre, numeroSexo, edad, numero, apellido, email, clave, clave2, localidad, true);
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if (respuesta.isPresent()) {
@@ -104,9 +104,12 @@ public class UsuarioServicio implements UserDetailsService {
             if (usuario.getFoto() != null) {
                 idFoto = usuario.getFoto().getId();
             }
-
-            Foto foto = fotoServicio.actualizar(idFoto, archivo);
-            usuario.setFoto(foto);
+            
+            //Si se eligió nueva foto, la actualiza, sino queda la que había.
+            if (archivo != null && !archivo.isEmpty()) {
+                Foto foto = fotoServicio.actualizar(idFoto, archivo);
+                usuario.setFoto(foto);
+            }
 
             usuario.setEditado(new Date());
             usuarioRepositorio.save(usuario);
@@ -188,7 +191,7 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     //Verificacion para ver si  los datos del front estan en lo correcto.
-    private void validar(String username, String nombre, Integer sexo, String edad, String numero, String apellido, String email, String clave, String clave2, Localidad localidad) throws ErrorServicio {
+    private void validar(String username, String nombre, Integer sexo, String edad, String numero, String apellido, String email, String clave, String clave2, Localidad localidad, boolean actualizar) throws ErrorServicio {
 
         if (sexo == null) {
             throw new ErrorServicio("No ha ingresado un sexo valido.");
@@ -210,8 +213,16 @@ public class UsuarioServicio implements UserDetailsService {
             throw new ErrorServicio("El nombre de usuario no puede ser nulo.");
         }
 
-        if (usuarioRepositorio.buscarUsuarioPorUsername(username) != null) {
-            throw new ErrorServicio("El nombre de usuario ingresado ya existe.");
+        //Comprueba distinto según se esté creando o modificando el usuario, para que no de eror por repetir el username cuando el usuario actualiza los datos.
+        Usuario usuario = usuarioRepositorio.buscarUsuarioPorUsername(username);
+        if (actualizar) {
+            if (usuario != null && !usuario.getUsername().equals(username)) {
+                throw new ErrorServicio("El nombre de usuario ingresado ya existe.");
+            }
+        } else {
+            if (usuario != null) {
+                throw new ErrorServicio("El nombre de usuario ingresado ya existe.");
+            }
         }
 
         if (nombre == null || nombre.isEmpty()) {
@@ -226,10 +237,19 @@ public class UsuarioServicio implements UserDetailsService {
             throw new ErrorServicio("El email del usuario no puede ser nulo.");
         }
 
-        if (usuarioRepositorio.buscarUsuarioPorEmail(email) != null) {
-            throw new ErrorServicio("El email ingresado ya existe.");
+        /*Comprueba distinto según se esté creando o modificando el usuario, para que no 
+        de eror por repetir el mail cuando el usuario actualiza los datos. */
+        usuario = usuarioRepositorio.buscarUsuarioPorEmail(email);
+        if (actualizar) {
+            if (usuario != null && !usuario.getEmail().equals(email)) {
+                throw new ErrorServicio("El email ingresado ya existe.");
+            }
+        } else {
+            if (usuario != null) {
+                throw new ErrorServicio("El email ingresado ya existe.");
+            }
         }
-
+        
         if (clave == null || clave.isEmpty() || clave.length() <= 6) {
             throw new ErrorServicio("La clave no puede ser nula y debe tener más de 6 digitos.");
         }
@@ -260,6 +280,25 @@ public class UsuarioServicio implements UserDetailsService {
             }
         }
 
+    }
+    
+    //Obtiene el sexo en numero para poder enviarlo al html
+    public Integer obtenerSexo(Usuario usuario) throws ErrorServicio {
+
+        if (usuario == null || usuario.getSexo() == null) {
+            throw new ErrorServicio("El usuario no tiene asignado el sexo.");
+        } else {
+            if (usuario.getSexo() == SexoHumano.MUJER) {
+                return 1;
+            }
+            if (usuario.getSexo() == SexoHumano.HOMBRE) {
+                return 2;
+            }
+            if (usuario.getSexo() == SexoHumano.OTROS) {
+                return 3;
+            }
+        }
+        return null;
     }
 
     @Override

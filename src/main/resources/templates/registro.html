@@ -11,45 +11,45 @@
     <body>
         <header th:replace="fragments/header::nav"></header>    
         
-        <h1 th:if="${session.usuariosession != null}" id="logueado">¡Ya se encuentra registrado!</h1>
         <h1 th:text="${error}" th:if="${error}"></h1>
-        <form th:if="${session.usuariosession == null}" class="box" action="/registrar" method="POST" enctype="multipart/form-data">
-            <h1>Registro</h1>
-            <input type="text" name="nombre" placeholder="Nombre" maxlength="20" th:value="${nombre}" ><br> 
-            <input type="text" name="apellido" placeholder="Apellido" maxlength="20" th:value="${apellido}"><br>
-            <input type="number" name="edad" id="edad" placeholder="Edad" maxlength="3" th:value="${edad}"><br>
-            <input type="text" name="username" placeholder="Nombre de usuario" th:value="${username}" maxlength="20"><br>
+        
+        <form class="box" enctype="multipart/form-data">
+            <input type="hidden" name="id" th:value="${perfil.id}">
+            
+            <h1 th:text="${accion}"></h1><br><br>
+                    
+            <input type="text" name="nombre" placeholder="Nombre" maxlength="20" th:value="${perfil.nombre}" ><br> 
+            <input type="text" name="apellido" placeholder="Apellido" maxlength="20" th:value="${perfil.apellido}"><br>
+            <input type="number" name="edad" id="edad" placeholder="Edad" maxlength="3" th:value="${perfil.edad}"><br>
+            <input type="text" name="username" placeholder="Nombre de usuario" th:value="${perfil.username}" maxlength="20"><br>
 
             <div class="contenedor">
                 <label for="Mujer" class="uno">Mujer</label>
-                <input type="radio" id="Mujer" name="sexo" value="1" required="true">
+                <input type="radio" id="Mujer" name="sexo" value="1" th:checked="${sexoNumero} == 1">
 
                 <label for="hombre" class="uno">Hombre</label>
-                <input type="radio" id="Hombre" name="sexo" value="2" required="true">
+                <input type="radio" id="Hombre" name="sexo" value="2" th:checked="${sexoNumero} == 2">
 
                 <label for="otro" class="uno">Otro</label>
-                <input type="radio" id="Otro" name="sexo" value="3" required="true">
+                <input type="radio" id="Otro" name="sexo" value="3" th:checked="${sexoNumero} == 3">
             </div><br>
 
-
-            <input type="text" name="numero" placeholder="(Código de área) Número" th:value="${numero}"><br>
+            <input type="text" name="numero" placeholder="(Código de área) Número" th:value="${perfil.numero}"><br>
             <input type="file" name="archivo"><br>
-
-            <input type="text" name="email" placeholder="E-Mail" th:value="${email}"><br>
+            <input type="text" name="email" placeholder="E-Mail" th:value="${perfil.email}"><br>
 
             <label>Localidad</label>
             <select name="idLocalidad"> 
                 <option th:each="localidad : ${localidades}" th:value="${localidad.id}" th:text="${localidad.nombre}"></option>
             </select>
 
-
             <input type="password" name="clave1" placeholder="Contraseña"><br>
             <input type="password" name="clave2" placeholder="Repetir Contraseña"><br>
 
-
-            <input type="submit" value="Registar">
-            <input type="reset" value="Limpiar">
-
+            <input th:if="${session.usuariosession != null}" formaction="/usuario/actualizar-perfil" formmethod="POST" type="submit" value="Actualizar">
+            <input th:if="${session.usuariosession != null}" formaction="/" formmethod="GET" type="submit" value="Volver">
+            <input th:if="${session.usuariosession == null}" action="/registrar" method="POST" type="submit" value="Registar">
+            <input th:if="${session.usuariosession == null}" type="reset" value="Limpiar">
 
         </form>
 

@@ -49,6 +49,7 @@ public class PortalControlador {
 
         List<Localidad> localidades = localidadServicio.listarLocalidades();
         modelo.addAttribute("localidades", localidades);
+        modelo.addAttribute("accion", "Registro");
         return "registro.html";
     }
 
@@ -73,6 +74,7 @@ public class PortalControlador {
             modelo.addAttribute("numero", numero);
             modelo.addAttribute("email", email);
             modelo.addAttribute("error", e.getMessage());
+            modelo.addAttribute("accion", "Registro");
             
             return "registro.html";
         }
