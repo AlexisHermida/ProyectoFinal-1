@@ -11,12 +11,12 @@
     <body>
         <header th:replace="fragments/header::nav"></header>    
         
-        <h1 th:text="${error}" th:if="${error}"></h1>
         
         <form class="box" enctype="multipart/form-data">
             <input type="hidden" name="id" th:value="${perfil.id}">
             
-            <h1 th:text="${accion}"></h1><br><br>
+            <h1 th:text="${accion}"></h1><br>
+            <h2 id="error" th:if="${error}"  th:text="${error}"></h2><br>
                     
             <input type="text" name="nombre" placeholder="Nombre" maxlength="20" th:value="${perfil.nombre}" ><br> 
             <input type="text" name="apellido" placeholder="Apellido" maxlength="20" th:value="${perfil.apellido}"><br>
@@ -40,7 +40,7 @@
 
             <label>Localidad</label>
             <select name="idLocalidad"> 
-                <option th:each="localidad : ${localidades}" th:value="${localidad.id}" th:text="${localidad.nombre}"></option>
+                <option th:each="localidad : ${localidades}" th:value="${localidad.id}" th:text="${localidad.nombre}" th:selected="${perfil.localidad != null && localidad == perfil.localidad}"></option>
             </select>
 
             <input type="password" name="clave1" placeholder="Contraseña"><br>
@@ -48,7 +48,7 @@
 
             <input th:if="${session.usuariosession != null}" formaction="/usuario/actualizar-perfil" formmethod="POST" type="submit" value="Actualizar">
             <input th:if="${session.usuariosession != null}" formaction="/" formmethod="GET" type="submit" value="Volver">
-            <input th:if="${session.usuariosession == null}" action="/registrar" method="POST" type="submit" value="Registar">
+            <input th:if="${session.usuariosession == null}" formaction="/registrar" formmethod="POST" type="submit" value="Registar">
             <input th:if="${session.usuariosession == null}" type="reset" value="Limpiar">
 
         </form>

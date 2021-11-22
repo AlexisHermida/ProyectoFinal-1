@@ -79,9 +79,12 @@ public class GatoServicio {
                     idFoto = gato.getFotoPrincipal().getId();
                 }
 
-                Foto foto = fotoServicio.actualizar(idFoto, archivo);
-                gato.setFotoPrincipal(foto);
-
+                //Si se eligió nueva foto, la actualiza, sino queda la que había.
+                if (archivo != null && !archivo.isEmpty()) {
+                    Foto foto = fotoServicio.actualizar(idFoto, archivo);
+                    gato.setFotoPrincipal(foto);
+                }
+            
                 gato.setEditado(new Date());
 
                 gatoRepositorio.save(gato);

@@ -219,5 +219,23 @@ public class GatoControlador {
         }
 
     }
+    
+    //Para restaurar un gato marcado como adoptado en la lista de mis gatos.
+    @GetMapping("/restaurar")
+    public String restaurar(ModelMap modelo, HttpSession session, @RequestParam String idGato) {
+        
+        Usuario usuariologged = (Usuario) session.getAttribute("usuariosession");
+        if (usuariologged == null) {
+            return "redirect:/login";
+        }
+        
+        try {
+            gatoServicio.gatoDesadoptado(idGato, usuariologged.getId());
+            return "redirect:/gato/mis-gatos";
+        } catch (ErrorServicio e) {
+            modelo.addAttribute("error", e.getMessage());
+            return "index.html";
+        }
+    }
 
 }

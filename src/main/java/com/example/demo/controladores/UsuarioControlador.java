@@ -8,6 +8,8 @@ import com.example.demo.servicios.LocalidadServicio;
 import com.example.demo.servicios.TokenServicio;
 import com.example.demo.servicios.UsuarioServicio;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -139,12 +141,17 @@ public class UsuarioControlador {
             session.setAttribute("usuariosession", usuario);
             modelo.put("titulo", "Perfil Actualizado!!");
             modelo.put("descripcion", "cambios guardados con exito!!!");
-            return "exito";
+            return "exito.html";
         } catch (ErrorServicio e) {
             List<Localidad> localidades = localidadServicio.listarLocalidades();
             modelo.put("localidad", localidades);
             modelo.put("error", e.getMessage());
             modelo.put("perfil", usuario);
+            try {
+                modelo.addAttribute("sexoNumero", usuarioServicio.obtenerSexo(usuario));
+            } catch (ErrorServicio ex) {
+                Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
             modelo.put("accion", "Actualizar");
             return "registro.html";
         }

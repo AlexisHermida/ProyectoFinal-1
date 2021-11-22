@@ -1,6 +1,7 @@
 package com.example.demo.controladores;
 
 import com.example.demo.entidades.Localidad;
+import com.example.demo.entidades.Usuario;
 import com.example.demo.excepciones.ErrorServicio;
 import com.example.demo.servicios.LocalidadServicio;
 import com.example.demo.servicios.UsuarioServicio;
@@ -47,6 +48,8 @@ public class PortalControlador {
     @GetMapping("/registro")
     public String registo(ModelMap modelo) {
 
+        Usuario usuario = new Usuario();
+        modelo.addAttribute("perfil", usuario);
         List<Localidad> localidades = localidadServicio.listarLocalidades();
         modelo.addAttribute("localidades", localidades);
         modelo.addAttribute("accion", "Registro");
@@ -62,17 +65,21 @@ public class PortalControlador {
    
             usuarioServicio.registrar(archivo, username, nombre, sexo, edad, numero, apellido, email, clave1, clave2, idLocalidad);
             modelo.addAttribute("titulo", "¡Felicidades! Se ha registrado correctamente en nuestra página");
-            return "index.html";
+            return "exito.html";
 
         } catch (ErrorServicio e) {
             List<Localidad> localidades = localidadServicio.listarLocalidades();
             modelo.addAttribute("localidades", localidades);
-            modelo.addAttribute("username", username);
-            modelo.addAttribute("nombre", nombre);
-            modelo.addAttribute("apellido", apellido);
-            modelo.addAttribute("edad", edad);
-            modelo.addAttribute("numero", numero);
-            modelo.addAttribute("email", email);
+            
+            Usuario usuario = new Usuario();
+            usuario.setApellido(apellido);
+            usuario.setEdad(edad);
+            usuario.setEmail(email);
+            usuario.setNombre(nombre);
+            usuario.setNumero(numero);
+            usuario.setUsername(username);
+            modelo.addAttribute("perfil", usuario);
+            
             modelo.addAttribute("error", e.getMessage());
             modelo.addAttribute("accion", "Registro");
             
