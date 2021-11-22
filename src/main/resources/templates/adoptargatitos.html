@@ -23,8 +23,8 @@
                                             <img class="img-fluid"  th:if="${gato.fotoPrincipal != null}" th:src="${'/foto/gato/' + gato.id}" title="Michi lindo de patitas" alt="Un michi hermoso">
                                             <img class="img-fluid"  th:if="${gato.fotoPrincipal == null}" src="/avatardefault.jpg" title="Michi lindo de patitas" alt="Un michi hermoso">    
                                                 <div class="card-body">
-                                                    <h5 class="card-title" th:text="${gato.nombre}"></h5>
-                                                    <p class="card-text" th:text="${gato.edad}"></p>
+                                                    <h5 class="card-title" th:text="'Nombre: '+${gato.nombre}"></h5>
+                                                    <p class="card-text" th:text="'Edad: '+${gato.edad}"></p>
                                                     <a href="" class="btn btn-primary">Ver info del gatito</a>
                                                 </div>
                                         </div>
