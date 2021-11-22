@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
@@ -14,9 +14,7 @@
 
         <header th:replace="fragments/header::nav"></header>
 
-        
         <h1 class="mensaje">Mis michis que buscan un hogar</h1>
-        <a th:href="@{/gato/editar-gato}" text-aling="center" class="btn btn-success"  style="padding: 16px;">Agregar gato</a>
         <div class="tabla">
             <table class="table table-dark table-hover ">
                 <thead>
@@ -49,10 +47,11 @@
                 </tbody>
             </table>
         </div> 
+        <a th:href="@{/gato/editar-gato}" text-aling="center" class="btn btn-success"  style="padding: 16px; margin-left: 10%">Agregar gato</a>
 
         <h1 class="mensaje">Mis michis que fueron adoptados</h1>
         <div class="tabla">
-            <table class="table table-dark table-hover ">
+            <table class="table table-dark table-hover">
                 <thead>
                     <th>Foto</th>
                     <th>Nombre</th>
@@ -76,11 +75,12 @@
                         </td>
                     </tr>
                     <tr th:if="${gatosAdoptados == null || gatosAdoptados.isEmpty()}">
-                        <td colspan="5" th:text="'Todavia no tienes ningún michi adoptado'"></td>
+                        <td colspan="7" th:text="'Todavia no tienes ningún michi adoptado'"></td>
                     </tr>
                 </tbody>
             </table>
         </div> 
+        <a th:href="@{/}" class="btn btn-light btn-outline-dark" style="padding: 16px; margin-left: 10%">Volver al inicio</a>
 
         <footer th:replace="fragments/footer::footer"></footer>
 

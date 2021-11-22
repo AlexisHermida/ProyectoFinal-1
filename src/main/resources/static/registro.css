@@ -4,10 +4,12 @@
 }
 
 body {
-    background-image: url("login.jpg");
+    background-image: url("registro.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    margin: 0%;
+    padding: 0%;
     background-size: cover;
 }
 .BotonNav{
@@ -26,6 +28,8 @@ body {
     background-color:teal;
 }
 header{
+    
+    margin-top: 0;
     background-color:seagreen;
     text-align: center;
 }
@@ -162,4 +166,9 @@ h1{
     text-align: center;
     text-shadow: -4px 3px 0 black; 
     font-size: 100px;
+}
+
+.distancia{
+    margin-top:   30px;
+    margin-bottom: 30px;
 }

@@ -133,6 +133,7 @@ public class AdminControlador {
 
             modelo.addAttribute("localidades", localidades);
             modelo.addAttribute("usuario", usuario);
+         
 
             return "editarregistroadmin.html";
 
@@ -146,17 +147,18 @@ public class AdminControlador {
 
     //Confirmar la modificicacion del perfil del usuario
     @PostMapping("/actualizar-usuario")
-    public String actualizarUsuario(@RequestParam MultipartFile archivo, HttpSession session, ModelMap modelo, @ModelAttribute Usuario usuario) {
+    public String actualizarUsuario(HttpSession session, ModelMap modelo, @ModelAttribute Usuario usuario, @RequestParam String borrar) {
 
         Usuario usuarioLogueado = (Usuario) session.getAttribute("usuariosession");
 
-        if (usuarioLogueado == null || !usuarioLogueado.getPrivilegios().toString().equals("ADMIN")) {
+        if (usuarioLogueado == null || !usuarioLogueado.getPrivilegios().toString().equals("ADMIN")){
             return "redirect:/";
         }
 
         try {
-
-            usuarioServicio.modificarAdmin(archivo, usuario.getId(), usuario.getNombre(), usuario.getEdad(), usuario.getNumero(), usuario.getApellido(), usuario.getLocalidad().getId());
+              
+            usuarioServicio.modificarAdmin(usuario.getId(), usuario.getNombre(), usuario.getEdad(), usuario.getNumero(), usuario.getApellido(), usuario.getLocalidad().getId(), borrar);
+            
             return "redirect:/admin/lista-usuarios";
 
         } catch (ErrorServicio e) {

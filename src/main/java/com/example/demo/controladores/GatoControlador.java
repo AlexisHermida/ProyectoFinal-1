@@ -48,7 +48,7 @@ public class GatoControlador {
 
         model.put("gatos", gatos);
 
-        return "mis_gatos.html";
+        return "adoptargatitos.html";
     }
 
     //Envía el perfil de un Gato para ver sus detalles.

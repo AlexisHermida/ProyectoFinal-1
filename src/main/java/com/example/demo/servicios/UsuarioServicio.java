@@ -93,6 +93,7 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setNumero(numero);
             usuario.setApellido(apellido);
             usuario.setEmail(email);
+            usuario.setUsername(username);
             usuario.setSexo(elegirSexo(numeroSexo));
             usuario.setPrivilegios(PrivilegiosUsuario.USER);
             usuario.setLocalidad(localidad);
@@ -355,7 +356,7 @@ public class UsuarioServicio implements UserDetailsService {
     
 /////Metodo para modificar perfiles de usuarios desde la vista de un admin
     @Transactional
-    public void modificarAdmin(MultipartFile archivo, String idUsuario, String nombre, String edad, String numero, String apellido, String idLocalidad) throws ErrorServicio {
+    public void modificarAdmin(String idUsuario, String nombre, String edad, String numero, String apellido, String idLocalidad, String borrar) throws ErrorServicio {
 
         Localidad localidad = localidadRepositorio.getOne(idLocalidad);
 
@@ -396,16 +397,10 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setPrivilegios(PrivilegiosUsuario.USER);
             usuario.setLocalidad(localidad);
 
-          
-
-            String idFoto = null;
-            if (usuario.getFoto() != null) {
-                idFoto = usuario.getFoto().getId();
+            if (borrar.equals("si")) {
+                usuario.setFoto(null);
             }
-
-            Foto foto = fotoServicio.actualizar(idFoto, archivo);
-            usuario.setFoto(foto);
-
+            
             usuario.setEditado(new Date());
             usuarioRepositorio.save(usuario);
         } else {

@@ -12,11 +12,15 @@
         <header th:replace="fragments/header::nav"></header>    
         
         
+        <div id="foto" >
+            <img  class="img-fluid " style="max-height: 150px; min-height: 150px; max-width: 180px; min-width: 180px; margin-left: 72%; margin-top: 5%" th:if="${perfil.foto != null && perfil.id != null}" th:src="${'/foto/usuario/' + perfil.id}" title="Usuario de nuestro sitio web" alt="Usuario de nuestro sitio web">
+            <img  class="img-fluid " style="max-height: 150px; min-height: 150px; max-width: 180px; min-width: 180px; margin-left: 72%; margin-top: 5%" th:if="${perfil.foto == null && perfil.id != null}" src="/avatardefault.jpg" title="Usuario de nuestro sitio web" alt="Usuario de nuestro sitio web"> 
+        </div>
         <form class="box" enctype="multipart/form-data">
             <input type="hidden" name="id" th:value="${perfil.id}">
             
             <h1 th:text="${accion}"></h1><br>
-            <h2 id="error" th:if="${error}"  th:text="${error}"></h2><br>
+            <h2 id="error" th:if="${error}"  th:text="${error}" style="font-size: 20px; color: red"></h2><br>
                     
             <input type="text" name="nombre" placeholder="Nombre" maxlength="20" th:value="${perfil.nombre}" ><br> 
             <input type="text" name="apellido" placeholder="Apellido" maxlength="20" th:value="${perfil.apellido}"><br>
@@ -53,6 +57,7 @@
 
         </form>
 
+        
 
        
 

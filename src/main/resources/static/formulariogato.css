@@ -95,6 +95,21 @@ input[type=text]:focus {
     transition-duration: 0.4s;
 }
 
+.volver{
+
+    font-family: bahnschrift;
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px 45px;
+    background-color:white;
+    border: none;
+    color: black;
+    font-size: 130%;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+}
+
 .eliminar{
     margin-top: 25px;
     font-family: bahnschrift;

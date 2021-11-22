@@ -144,7 +144,7 @@ public class UsuarioControlador {
             return "exito.html";
         } catch (ErrorServicio e) {
             List<Localidad> localidades = localidadServicio.listarLocalidades();
-            modelo.put("localidad", localidades);
+            modelo.put("localidades", localidades);
             modelo.put("error", e.getMessage());
             modelo.put("perfil", usuario);
             try {

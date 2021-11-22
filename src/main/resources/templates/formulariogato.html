@@ -71,6 +71,7 @@
                     <button class="eliminar" th:if="${accion =='eliminar'}" formaction="/gato/eliminar-gato" formmethod="POST" type="submit">Eliminar michi</button>
                 </div>
             </form>
+            <button role="link" onclick="window.location='/'" class="volver" style="margin-left: 15%;">Volver</button>
         </div>   
         <footer th:replace="fragments/footer::footer"></footer>
 
