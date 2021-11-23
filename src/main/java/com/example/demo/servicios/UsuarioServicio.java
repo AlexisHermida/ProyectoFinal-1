@@ -45,11 +45,11 @@ public class UsuarioServicio implements UserDetailsService {
 
     //Registrar usuario.
     @Transactional
-    public void registrar(MultipartFile archivo, String username, String nombre, Integer numeroSexo, String edad, String numero, String apellido, String email, String clave, String clave2, String idLocalidad) throws ErrorServicio {
+    public void registrar(MultipartFile archivo, SexoHumano sexo, String username, String nombre, String edad, String numero, String apellido, String email, String clave, String clave2, String idLocalidad) throws ErrorServicio {
 
         Localidad localidad = localidadRepositorio.getOne(idLocalidad);
 
-        validar(username, nombre, numeroSexo, edad, numero, apellido, email, clave, clave2, localidad, false);
+        validar(username, nombre, edad, numero, apellido, email, clave, clave2, localidad, false, sexo);
 
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
@@ -57,7 +57,7 @@ public class UsuarioServicio implements UserDetailsService {
         usuario.setEdad(edad);
         usuario.setNumero(numero);
         usuario.setEmail(email);
-        usuario.setSexo(elegirSexo(numeroSexo));
+        usuario.setSexo(sexo);
         usuario.setUsername(username);
         usuario.setPrivilegios(PrivilegiosUsuario.USER);
         usuario.setLocalidad(localidad);
@@ -78,11 +78,11 @@ public class UsuarioServicio implements UserDetailsService {
     //Modificar usuario.
 
     @Transactional
-    public void modificar(MultipartFile archivo, String username, String idUsuario, String nombre, Integer numeroSexo, String edad, String numero, String apellido, String email, String clave, String clave2, String idLocalidad) throws ErrorServicio {
+    public void modificar(MultipartFile archivo, SexoHumano sexo, String username, String idUsuario, String nombre, String edad, String numero, String apellido, String email, String clave, String clave2, String idLocalidad) throws ErrorServicio {
 
         Localidad localidad = localidadRepositorio.getOne(idLocalidad);
 
-        validar(username, nombre, numeroSexo, edad, numero, apellido, email, clave, clave2, localidad, true);
+        validar(username, nombre, edad, numero, apellido, email, clave, clave2, localidad, true, sexo);
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if (respuesta.isPresent()) {
@@ -94,7 +94,7 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setApellido(apellido);
             usuario.setEmail(email);
             usuario.setUsername(username);
-            usuario.setSexo(elegirSexo(numeroSexo));
+            usuario.setSexo(sexo);
             usuario.setPrivilegios(PrivilegiosUsuario.USER);
             usuario.setLocalidad(localidad);
 
@@ -192,7 +192,7 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     //Verificacion para ver si  los datos del front estan en lo correcto.
-    private void validar(String username, String nombre, Integer sexo, String edad, String numero, String apellido, String email, String clave, String clave2, Localidad localidad, boolean actualizar) throws ErrorServicio {
+    private void validar(String username, String nombre, String edad, String numero, String apellido, String email, String clave, String clave2, Localidad localidad, boolean actualizar, SexoHumano sexo) throws ErrorServicio {
 
         if (sexo == null) {
             throw new ErrorServicio("No ha ingresado un sexo valido.");
@@ -238,6 +238,10 @@ public class UsuarioServicio implements UserDetailsService {
             throw new ErrorServicio("El email del usuario no puede ser nulo.");
         }
 
+        if (!email.contains("@")) {
+            throw new ErrorServicio("El email no posee un formato valido.");
+        }
+        
         /*Comprueba distinto según se esté creando o modificando el usuario, para que no 
         de eror por repetir el mail cuando el usuario actualiza los datos. */
         usuario = usuarioRepositorio.buscarUsuarioPorEmail(email);
@@ -265,42 +269,9 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-    //Elegir sexo usuario
-    public SexoHumano elegirSexo(Integer x) throws ErrorServicio {
 
-        if (null == x) {
-            throw new ErrorServicio("No ha elegido un sexo valido.");
-        } else {
-            switch (x) {
-                case 1:
-                    return SexoHumano.MUJER;
-                case 2:
-                    return SexoHumano.HOMBRE;
-                default:
-                    return SexoHumano.OTROS;
-            }
-        }
-
-    }
     
-    //Obtiene el sexo en numero para poder enviarlo al html
-    public Integer obtenerSexo(Usuario usuario) throws ErrorServicio {
-
-        if (usuario == null || usuario.getSexo() == null) {
-            throw new ErrorServicio("El usuario no tiene asignado el sexo.");
-        } else {
-            if (usuario.getSexo() == SexoHumano.MUJER) {
-                return 1;
-            }
-            if (usuario.getSexo() == SexoHumano.HOMBRE) {
-                return 2;
-            }
-            if (usuario.getSexo() == SexoHumano.OTROS) {
-                return 3;
-            }
-        }
-        return null;
-    }
+    
 
     @Override
     @Transactional

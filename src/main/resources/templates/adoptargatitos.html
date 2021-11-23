@@ -35,7 +35,8 @@
                                                         <h5 class="card-title" th:text="'Nombre: '+${gato.nombre}"></h5>
                                                         <p class="card-text" th:text="'Edad: '+${gato.edad}"></p>
                                                         <p class="card-text" th:text="'Raza: '+${gato.raza}"></p>
-                                                        <a href="" class="btn btn-primary">Ver info del gatito</a>
+                                                        <a  th:if="${gato.usuario.id != session.usuariosession.id}" th:href="@{/gato/perfil}+'?id='+${gato.id}" class="btn btn-primary">Ver info del gatito</a>
+                                                        <p th:if="${gato.usuario.id == session.usuariosession.id}" class="card-text" th:text="'Este es su michi'"></p>
                                                     </div>
                                                     </div>
                                                     </div>

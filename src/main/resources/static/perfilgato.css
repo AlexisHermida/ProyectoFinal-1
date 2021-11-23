@@ -12,7 +12,7 @@ body{
 .BotonNav{
     font-family: bahnschrift;
     color: whitesmoke;
-    background-color:seagreen;
+    background-color:#2F4F4E;
     font-size: 20px;
     border: none;
     padding: 25px 32px;
@@ -25,7 +25,7 @@ body{
     background-color:teal;
 }
 header{
-    background-color:seagreen;
+    background-color:#2F4F4E;
     text-align: center;
 }
 
@@ -42,13 +42,24 @@ h1{
 
 .Cuadro{
     background-color: rgba(0, 0, 0, 0.41);
-    margin-left: 35%;
-    margin-right: 35%;
+    margin-left: 20%;
+    margin-right: 20%;
     border-radius: 10%;
     text-align: center;
+    display: flex;
+    color: whitesmoke;
+    font-size: 20px;
 }
-
-
+.Foto{
+    margin-left: 10px;
+    margin-top: 7%;
+}
+.Info{
+    margin-left: 25%;
+    margin-top: 2%;
+    margin-bottom: 0%;
+    text-align: left;
+}
 
 
 .f1{
@@ -77,13 +88,13 @@ h1{
 
 
 .Adoptar{
-    margin-left:45%;
-    margin-top: 25px;
+    margin-left:39%;
+    margin-top: 15px;
     font-family: bahnschrift;
     text-decoration: none;
     display: inline-block;
     padding: 15px 45px;
-    background-color:seagreen;
+    background-color: #2F4F4E;
     border: none;
     color: white;
     font-size: 130%;
@@ -97,12 +108,10 @@ h1{
 
 
 
-
-
 footer{
-    margin-top: 1%;
+    margin-top: 12%;
     background: rgba(0, 0, 0, 0.5);
-    background-image: url(Logo.png);
+    background-image: url(logo.ico);
     color: white;
     float: left;
     background-repeat: no-repeat;
@@ -134,4 +143,10 @@ footer{
 }
 
 
+#textarea{
+  font-size: 20px;
+  width: 300px;
+  height: 200px;
+  margin-bottom: 10%;
+}
 

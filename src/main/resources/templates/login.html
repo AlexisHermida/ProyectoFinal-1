@@ -12,6 +12,7 @@
         <header th:replace="fragments/header::nav"></header>
 
         <h1 th:if="${session.usuariosession != null}" id="logueado">¡Ya se encuentra logueado!</h1>
+        
         <form th:if="${session.usuariosession == null}" class="box" action="/logincheck" method="POST">
             <h2 id="error" th:if="${error}"  th:text="${error}"></h2>
             <h2 id="logout" th:if="${logout}" th:text="${logout}" ></h2>

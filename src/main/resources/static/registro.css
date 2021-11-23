@@ -1,21 +1,16 @@
 * {
-    font-family: Helvetica, sans-serif;
     font-size: 15px;
+    font-family: 'Bebas Neue', cursive;
 }
 
 body {
-    background-image: url("registro.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0%;
-    padding: 0%;
+    background-image: url(registro.jpg);    
     background-size: cover;
 }
 .BotonNav{
     font-family: bahnschrift;
     color: whitesmoke;
-    background-color:seagreen;
+    background-color:#2F4F4E;
     font-size: 20px;
     border: none;
     padding: 25px 32px;
@@ -28,147 +23,127 @@ body {
     background-color:teal;
 }
 header{
-    
-    margin-top: 0;
-    background-color:seagreen;
+    background-color:#2F4F4E;
     text-align: center;
 }
 
-.box {
-    width: 450px;
-    height: 700px;
-    padding: 40px;
-    margin-left: 50%;
-    transform: translate(-50%, 10%);
-    background: #191919;
+
+.contenido {
+    background-color: rgba(0, 0, 0, 0.50);
+    margin-top: 10%;
+    justify-content: center;
+    border-radius: 20px;
+    width: 400px;
     text-align: center;
-    box-shadow: 10px 9px 5px black;
+    height: auto;
+    margin-left: 5%;
+    font-size: 30px;
 }
 
-.box h1 {
+.color-letra {
     color: white;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 32px;
-    font-family: SFProDisplay-Bold;
 }
 
-.box input[type="text"],
-.box input[type="password"] {
-    border: 0;
-    background-color: white;
-    display: block;
-    margin: auto;
+.texto {
+    font-size: 20px;
+    color: white;
+}
+
+.texto2 {
+    font-size: 20px;
+    margin-left: 40px;
+    color: white;
+}
+
+.contenido-registro {
+    background-color: rgba(0, 0, 0, 0.50);
+    margin-left: 15%;
+    margin-top: 2%;
     text-align: center;
-    border: 2px solid #3498db;
-    padding: 14px 10px;
-    width: 200px;
-    height: 5px;
-    outline: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.input {
+    width: 250px;
+    border-radius: 20px;
+    border: solid 1px black;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
     color: black;
-    border-radius: 24px;
-    transition: 0.15s;
+    height: 40px;
 }
 
-.box select {
-    border: 0;
-    background-color: white;
-    display: block;
-    margin: auto;
-    text-align: center;
-    border: 2px solid #3498db;
-    padding: 14px 10px;
-    width: 200px;
-    height: 5px;
-    outline: none;
+.option {
+    width: 250px;
+    border-radius: 20px;
+    border: solid 1px black;
+    font-size: 20px;
+    margin-top: 15px;
     color: black;
-    border-radius: 24px;
-    transition: 0.15s;
-}
-
-.box input[type="text"]:focus,
-.box input[type="password"]:focus {
-    width: 280px;
-    border-color: #53cc2e;
-}
-
-.box input[type="submit"] {
-    background: none;
-    display: block;
-    margin: 20px auto;
+    height: 40px;
+    margin-left: 138px;
     text-align: center;
-    border: 2px solid #3498db;
-    padding: 14px 40px;
+}
+
+.boton {
     width: 200px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
-}
-
-.box input[type="submit"]:hover {
-    background-color: #22ac10;
-}
-
-.box input[type="reset"] {
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
+    border-radius: 20px;
+    height: 40px;
     text-align: center;
-    border: 2px solid #3498db;
-    padding: 14px 40px;
-    width: 200px;
-    outline: none;
+    margin-top: 15px;
+}
+
+footer{
+    margin-top: 12%;
+    background: rgba(0, 0, 0, 0.5);
+    background-image: url(logo.ico);
     color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: 110px;
+}
+.FlexFoot{
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: rgba(0, 0, 0, 0.021);
+    margin: 15px;
 }
 
-.box input[type="reset"]:hover {
-    background-color: rgb(189, 8, 8);
-}
-
-footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    background-color: black;
-    text-align: center;
-    color: white;
-}
-
-.contenedor {
-    width: 300px;
-    border: 2px #3498db solid;
-    background-color: white;
-    outline: none;
-    border-radius: 24px;
-    margin-left: 73px;
-    height: 25px;
-    padding-top: 6px;
-}
-
-#logueado{
-    margin-top: 15%;
-    text-align: center;
-    font-size: 60px;
-}
-
-h1{
+.BotonFoot{
     font-family: bahnschrift;
-    color: whitesmoke; 
-    margin: 0%;
-    text-align: center;
-    text-shadow: -4px 3px 0 black; 
-    font-size: 100px;
+    color: whitesmoke;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.021);
+    margin-left: 7%;
+    font-size: 30px;
+    margin-right: none;
+    width: 160px;
+}
+.BotonFoot:hover{
+    background-color:rgba(0, 0, 0, 0.267);
 }
 
-.distancia{
-    margin-top:   30px;
-    margin-bottom: 30px;
+.FlexFoot >div{
+    margin-left: 5%;
 }
+
+
+
+.imagen {
+    align-items: flex-start;
+    margin-left: 0;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.foto1{
+  margin: 0%;
+  width: 50px;  
+}
+

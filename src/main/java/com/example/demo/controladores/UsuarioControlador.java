@@ -3,6 +3,7 @@ package com.example.demo.controladores;
 import com.example.demo.entidades.Localidad;
 import com.example.demo.entidades.TokenUsuario;
 import com.example.demo.entidades.Usuario;
+import com.example.demo.enums.SexoHumano;
 import com.example.demo.excepciones.ErrorServicio;
 import com.example.demo.servicios.LocalidadServicio;
 import com.example.demo.servicios.TokenServicio;
@@ -98,16 +99,16 @@ public class UsuarioControlador {
         Usuario login = (Usuario) session.getAttribute("usuariosession");
 
         if (login == null || !login.getId().equals(id)) {
-            return "redirect:/inicio";
+            return "redirect:/";
         }
 
         try {
             Usuario usuario = usuarioServicio.buscarUsuarioPorId(id);
             model.addAttribute("perfil", usuario);
-            model.addAttribute("sexoNumero", usuarioServicio.obtenerSexo(usuario));
+            model.addAttribute("sexos", SexoHumano.values());
 
             List<Localidad> localidades = localidadServicio.listarLocalidades();
-            
+
             model.put("localidades", localidades);
             model.put("accion", "Actualizar");
 
@@ -119,14 +120,13 @@ public class UsuarioControlador {
 
     }
 
-   
     @PostMapping("/actualizar-perfil")
     public String actualizarPerfil(ModelMap modelo, @RequestParam String id, HttpSession session, @RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String edad, @RequestParam String clave1, @RequestParam String clave2, @RequestParam MultipartFile archivo,
-            String idLocalidad, @RequestParam String username, @RequestParam Integer sexo, @RequestParam String numero) {
-        
+            String idLocalidad, @RequestParam String username, @RequestParam SexoHumano sexo, @RequestParam String numero) {
+
         Usuario usuario = null;
- 
+
         try {
             usuario = usuarioServicio.buscarUsuarioPorId(id);
 
@@ -136,8 +136,8 @@ public class UsuarioControlador {
                 return "redirect:/inicio";
             }
 
-            usuarioServicio.modificar(archivo, username, id, nombre, sexo, edad, numero, apellido, email, clave1, clave2, idLocalidad);
-            
+            usuarioServicio.modificar(archivo, sexo, username, id, nombre, edad, numero, apellido, email, clave1, clave2, idLocalidad);
+
             session.setAttribute("usuariosession", usuario);
             modelo.put("titulo", "Perfil Actualizado!!");
             modelo.put("descripcion", "cambios guardados con exito!!!");
@@ -147,14 +147,38 @@ public class UsuarioControlador {
             modelo.put("localidades", localidades);
             modelo.put("error", e.getMessage());
             modelo.put("perfil", usuario);
-            try {
-                modelo.addAttribute("sexoNumero", usuarioServicio.obtenerSexo(usuario));
-            } catch (ErrorServicio ex) {
-                Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            modelo.addAttribute("sexos", SexoHumano.values());
             modelo.put("accion", "Actualizar");
             return "registro.html";
         }
 
     }
+
+    @GetMapping("/ver-perfil")
+    public String verPerfil(HttpSession session, ModelMap modelo, @RequestParam String id) {
+
+        Usuario login = (Usuario) session.getAttribute("usuariosession");
+
+        if (login == null) {
+            return "redirect:/";
+        }
+
+        try {
+
+            Usuario usuario = usuarioServicio.buscarUsuarioPorId(id);
+            modelo.addAttribute("perfil", usuario);
+            modelo.addAttribute("sexos", SexoHumano.values());
+            List<Localidad> localidades = localidadServicio.listarLocalidades();
+
+            modelo.put("localidades", localidades);
+            return "perfilusuario.html";
+
+        } catch (ErrorServicio e) {
+
+            modelo.addAttribute("error", e.getMessage());
+            return "redirect:/";
+        }
+
+    }
+
 }

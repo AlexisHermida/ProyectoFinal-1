@@ -2,6 +2,7 @@ package com.example.demo.controladores;
 
 import com.example.demo.entidades.Localidad;
 import com.example.demo.entidades.Usuario;
+import com.example.demo.enums.SexoHumano;
 import com.example.demo.excepciones.ErrorServicio;
 import com.example.demo.servicios.LocalidadServicio;
 import com.example.demo.servicios.UsuarioServicio;
@@ -53,23 +54,26 @@ public class PortalControlador {
         List<Localidad> localidades = localidadServicio.listarLocalidades();
         modelo.addAttribute("localidades", localidades);
         modelo.addAttribute("accion", "Registro");
+        modelo.addAttribute("sexos", SexoHumano.values());
         return "registro.html";
     }
 
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String edad, @RequestParam String clave1, @RequestParam String clave2, @RequestParam MultipartFile archivo,
-            String idLocalidad, @RequestParam String username, @RequestParam Integer sexo, @RequestParam String numero) {
+            String idLocalidad, @RequestParam String username, @RequestParam SexoHumano sexo, @RequestParam String numero) {
 
         try {
    
-            usuarioServicio.registrar(archivo, username, nombre, sexo, edad, numero, apellido, email, clave1, clave2, idLocalidad);
-            modelo.addAttribute("titulo", "¡Felicidades! Se ha registrado correctamente en nuestra página");
+            usuarioServicio.registrar(archivo, sexo, username, nombre, edad, numero, apellido, email, clave1, clave2, idLocalidad);
+            modelo.addAttribute("titulo", "¡Felicidades!");
+            modelo.addAttribute("descripcion", "Se ha registrado correctamente en nuestra página");
             return "exito.html";
 
         } catch (ErrorServicio e) {
             List<Localidad> localidades = localidadServicio.listarLocalidades();
             modelo.addAttribute("localidades", localidades);
+            modelo.addAttribute("sexos", SexoHumano.values());
             
             Usuario usuario = new Usuario();
             usuario.setApellido(apellido);
@@ -79,7 +83,6 @@ public class PortalControlador {
             usuario.setNumero(numero);
             usuario.setUsername(username);
             modelo.addAttribute("perfil", usuario);
-            
             modelo.addAttribute("error", e.getMessage());
             modelo.addAttribute("accion", "Registro");
             
@@ -88,4 +91,9 @@ public class PortalControlador {
 
     }
 
+    
+    @GetMapping("/contacto")
+    public String contacto(){
+        return "contacto.html";
+    }
 }

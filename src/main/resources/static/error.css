@@ -13,7 +13,7 @@ body{
 .BotonNav{
     font-family: bahnschrift;
     color: whitesmoke;
-    background-color:seagreen;
+    background-color:#2F4F4E;
     font-size: 20px;
     border: none;
     padding: 25px 32px;
@@ -26,7 +26,7 @@ body{
     background-color:teal;
 }
 header{
-    background-color:seagreen;
+    background-color:#2F4F4E;
     text-align: center;
 }
 

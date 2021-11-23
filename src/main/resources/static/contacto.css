@@ -1,13 +1,41 @@
+* {
+    font-family: 'Bebas Neue', cursive;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-    background-image: url("durmiendo.jpg");
+    background-image: url("contacto.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
+
+.contenido {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+.fila-principal {
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    align-items: center;
+    width: 600px;
+    height: 600px;
+    margin-left: 35%;
+    border-radius: 20px;
+    padding-top: 3%;
+    margin-top: 3%;
+}
+
+.lista {
+    list-style: none;
+    font-size: 28px;
+    margin-left: -5%;
+}
+
+
 .BotonNav{
     font-family: bahnschrift;
     color: whitesmoke;
@@ -26,9 +54,7 @@ body {
 header{
     background-color:#2F4F4E;
     text-align: center;
-    margin-bottom: 8%;
-} 
-
+}
 
 footer{
     margin-top: 12%;
@@ -64,53 +90,4 @@ footer{
     margin-left: 5%;
 }
 
-.tabla{
-    margin-bottom: 10%;
-    margin-left: 10%;
-    margin-right: 10%;
-}
 
-.mensaje{
-    text-shadow: -4px 3px 0 black; 
-    font-family: bahnschrift;
-    text-align: center;
-    color:#ffffff ;
-}
-
-#titulo{
-    text-shadow: -4px 3px 0 black; 
-    font-family: bahnschrift;
-    font-size: 70px;
-    height: 80%;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 10%;
-    color: rgb(251, 251, 251);
-    text-align: center;
-}
-
-#crear{
-    height: 80%;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 5%;
-    color: rgb(251, 251, 251);
-    text-align: center;
-}
-
-#formtext{
-    margin-left: 30%;
-    margin-right: 30%;
-}
-
-label{
-    font-size: 20px;
-    color: white;
-}
-
-#exampleFormControlTextarea1{
-
-    height: 500px;
-}
