@@ -30,10 +30,12 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:text="${cuerpomensaje}" th:disabled="${cuerpomensaje}"></textarea>
             </div>
-            <button th:if="${idusuarioreceptor}"><a th:href="@{/mensaje/crear(idusuarioreceptor=__${idusuarioreceptor}__)}" >Responder</a></button>
+            <a th:href="@{/mensaje/bandeja-mensajes(idusuario=__${session.usuariosession.id}__)}" class="btn btn-light btn-outline-dark" style="padding: 10px; width: 120px; margin-top: 5px">Volver</a>
+            <a th:if="${idusuarioreceptor}" class="btn btn-light btn-outline-dark" th:href="@{/mensaje/crear(idusuarioreceptor=__${idusuarioreceptor}__)}" style=" padding: 10px; width: 120px; margin-top: 5px" >Responder</a>
         </div>
 
 
+        
         <footer th:replace="fragments/footer::footer"></footer>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

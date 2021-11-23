@@ -9,8 +9,6 @@ import com.example.demo.servicios.LocalidadServicio;
 import com.example.demo.servicios.TokenServicio;
 import com.example.demo.servicios.UsuarioServicio;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -142,8 +140,8 @@ public class UsuarioControlador {
             usuarioServicio.modificar(archivo, sexo, username, id, nombre, edad, numero, apellido, email, clave1, clave2, idLocalidad);
 
             session.setAttribute("usuariosession", usuario);
-            modelo.put("titulo", "Perfil Actualizado!!");
-            modelo.put("descripcion", "cambios guardados con exito!!!");
+            modelo.put("titulo", "¡Perfil Actualizado!");
+            modelo.put("descripcion", "¡Cambios guardados con exito!");
             return "exito.html";
         } catch (ErrorServicio e) {
             List<Localidad> localidades = localidadServicio.listarLocalidades();
@@ -157,6 +155,7 @@ public class UsuarioControlador {
 
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/ver-perfil")
     public String verPerfil(HttpSession session, ModelMap modelo, @RequestParam String id) {
 

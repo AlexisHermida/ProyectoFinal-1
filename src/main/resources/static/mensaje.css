@@ -96,7 +96,9 @@ footer{
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 5%;
+    font-size: 60px;
     color: rgb(251, 251, 251);
+    text-shadow: -4px 3px 0 black; 
     text-align: center;
 }
 
