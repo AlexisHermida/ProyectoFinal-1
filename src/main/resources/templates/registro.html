@@ -25,11 +25,12 @@
 
                 <div class="col-6  col-sm-3 contenido color-letra">Bienvenidxs A <br>
                     <h1>ADOPCIONES PATITAS</h1><br>
-                    <p class="texto">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error nisi distinctio suscipit voluptatem facilis pariatur eos, id tempora accusamus voluptas provident fugiat impedit animi dolores laborum corrupti quae. Sapiente, maxime.
+                    <p  class="texto" style="font-size: 23px">
+                        ¡Nos alegra mucho verte por nuestra pagina web! Aqui podras ver a muchos gatitos que están buscando un nuevo hogar, o incluso tratarle de buscar un nuevo hogar a algún gatito tuyo. ¡Esperamos que pases un buen rato y que disfrutes mucho!
                     </p>
+                   
                    <div class="foto1">
-                       
+                    <img  th:if="${session.usuariosession == null}" class="img-fluid"  style="min-width: 250px; min-height: 250px; max-width: 250px; max-height: 250px; margin-left: 60px; margin-bottom: 19px; margin-top: 11px;" src="/gatosaludando.png" title="Imagen de bienvenida" alt="Gatito saludando">  
                     <img  class="img-fluid " style="min-width: 250px; min-height: 250px; max-width: 250px; max-height: 250px; margin-left: 60px; margin-bottom: 19px; margin-top: 11px;" th:if="${perfil.foto != null && perfil.id != null}" th:src="${'/foto/usuario/' + perfil.id}" title="Usuario de nuestro sitio web" alt="Usuario de nuestro sitio web">
                     <img  class="img-fluid " style="min-width: 250px; min-height: 250px; max-width: 250px; max-height: 250px; margin-left: 60px; margin-bottom: 19px; margin-top: 11px;" th:if="${perfil.foto == null && perfil.id != null}" src="/avatardefaultusuario.png" title="Usuario de nuestro sitio web" alt="Usuario de nuestro sitio web"> 
       

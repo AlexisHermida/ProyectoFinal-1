@@ -16,14 +16,17 @@
 
         <h1 class="error" th:text="${error}" th:if="${error}"></h1>
    
-        <div id="foto" >
-            <img  class="img-fluid " style="max-height: 155px; min-height: 155px;" th:if="${gato.fotoPrincipal != null && gato.id != null}" th:src="${'/foto/gato/' + gato.id}" title="Michi lindo de patitas" alt="Un michi hermoso">
-            <img  class="img-fluid " style="max-height: 155px; min-height: 155px;" th:if="${gato.fotoPrincipal == null && gato.id != null}" src="/avatardefault.jpg" title="Michi lindo de patitas" alt="Un michi hermoso"> 
-        </div>
+        
         <div>  
-            <form enctype="multipart/form-data" th:object="${gato}">    
-                <div class="Box">
+            <form enctype="multipart/form-data" th:object="${gato}" >    
+               
+                <div class="Box" style="margin-top: 25px; margin-bottom: 35px; height: 770px">
 
+              
+                    <img  class="img-fluid " style="max-height: 155px; min-height: 155px;" th:if="${gato.fotoPrincipal != null && gato.id != null}" th:src="${'/foto/gato/' + gato.id}" title="Michi lindo de patitas" alt="Un michi hermoso">
+                    <img  class="img-fluid " style="max-height: 155px; min-height: 155px;" th:if="${gato.fotoPrincipal == null && gato.id != null}" src="/avatardefault.jpg" title="Michi lindo de patitas" alt="Un michi hermoso"> 
+                        
+                 
                     <input type="hidden" th:field="*{id}">
 
                     <div class="distancia">
@@ -70,8 +73,8 @@
                         <br>
                     </div> 
                     
-                    <button formaction="/admin/modificar-perfil-gato" formmethod="POST" type="submit">Modificar michi</button>
-                </div>
+                    <button formaction="/admin/modificar-perfil-gato" formmethod="POST" type="submit" class="gato" style="display: block; margin:auto; text-align: center; border: 2px solid #ffffff; padding: 14px 40px; width: 200px; outline: none; color: black; border-radius: 24px; transition: 0.25s; cursor: pointer;">Modificar michi</button>
+                 </div>
             </form>
         </div>   
         <footer th:replace="fragments/footer::footer"></footer>
