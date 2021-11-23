@@ -39,8 +39,8 @@
                 <div class="col-6 col-sm-5 contenido-registro">
                     <form class="box" enctype="multipart/form-data">
                         <input type="hidden" name="id" th:value="${perfil.id}">
-
-                        <h1 th:text="${accion}" style="color: white;"></h1><br>
+                        <br>
+                        <h1 th:text="${accion}" style="color: white;"></h1>
                         <h2 id="error" th:if="${error}"  th:text="${error}" style="font-size: 20px; color: red"></h2><br>
 
                         <input type="text" name="nombre" placeholder="Nombre" maxlength="20" th:value="${perfil.nombre}" class="input"><br> 
@@ -69,7 +69,7 @@
                         <input th:if="${session.usuariosession != null}" formaction="/" formmethod="GET" type="submit" value="Volver" class="btn btn-primary boton">
                         <input th:if="${session.usuariosession == null}" formaction="/registrar" formmethod="POST" type="submit" value="Registar" class="btn btn-success boton">
                         <input th:if="${session.usuariosession == null}" type="reset" value="Limpiar" class="btn btn-primary boton">
-
+                        <br><br>
                     </form>
 
                 </div>
