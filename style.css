@@ -1,0 +1,152 @@
+* {
+    font-family: 'Bebas Neue', cursive;
+}
+
+body {
+    background-image: url(Fondo.PNG);
+    margin: 0%;
+    padding: 0%;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    font-family: bahnschrift;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    background-color: #2F4F4E;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 0.25em;
+    word-spacing: 1em;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    display: block;
+}
+
+.menu li {
+    display: inline-block;
+    text-align: center;
+}
+
+.menu li a:hover {
+    background: #C6E3AD;
+}
+
+h1 {
+    font-family: bahnschrift;
+    color: whitesmoke;
+    margin: 0%;
+    text-align: center;
+    text-shadow: -4px 3px 0 black;
+    font-size: 90px;
+}
+
+.Box {
+    background-color: rgba(0, 0, 0, 0.41);
+    margin-top: 0%;
+    margin-left: 35%;
+    margin-right: 35%;
+    border-radius: 6%;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    text-shadow: -2px 2px 0 black;
+}
+
+p {
+    margin: 2%
+}
+
+input[type=text] {
+    height: 25px;
+    width: 180px;
+    border-radius: 9%;
+    padding: 0%;
+    resize: none;
+}
+
+input[type=text]:focus {
+    border: 3px solid #555;
+    width: 28%;
+    resize: none;
+}
+
+.Examinar {
+    font-family: bahnschrift;
+    text-decoration: none;
+    display: inline-block;
+    padding: 1px 10px;
+}
+
+.Aceptar {
+    margin-top: 25px;
+    font-family: bahnschrift;
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px 45px;
+    background-color: seagreen;
+    border: none;
+    color: white;
+    font-size: 130%;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+}
+
+.Aceptar:hover {
+    background-color: teal;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: white;
+}
+
+.FlexFoot {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: rgba(0, 0, 0, 0.021);
+    margin: 15px;
+}
+
+.BotonFoot {
+    font-family: bahnschrift;
+    color: whitesmoke;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.021);
+    font-size: 20px;
+    margin-right: none;
+    width: 160px;
+}
+
+.BotonFoot:hover {
+    background-color: rgba(0, 0, 0, 0.267);
+}
+
+.FlexFoot>div {
+    margin-left: 5%;
+    font-size: 17px;
+}
+
+.imagen {
+    align-items: flex-start;
+    margin-left: 0;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
