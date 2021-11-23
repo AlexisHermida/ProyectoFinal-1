@@ -18,7 +18,7 @@
             
             <h2>Bienvendido <span th:if="${session.usuariosession != null}"  th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}"></span> a</h2>
             <h1>PATITAS</h1>
-            <h3>Presentación de la página: patitaas es una página para la contactar a personas que buscan apostar un gatito y aquellas que tine uno para dar en adopcion!</h3>
+            <h3>¡Nos alegra mucho verte por nuestra web! Aquí podrás ver a muchos gatitos que están buscando un nuevo hogar, o incluso tratar de buscarle uno a algún gatito tuyo!</h3>
 
             <div class="Opciones">
                 <h4>Seleccione una opcion<span sec:authorize="hasRole('USER')"> de usuario</span><span sec:authorize="hasRole('ADMIN')"> de admin</span>:</h4>
