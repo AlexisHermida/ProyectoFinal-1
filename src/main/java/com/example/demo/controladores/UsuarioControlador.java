@@ -9,10 +9,9 @@ import com.example.demo.servicios.LocalidadServicio;
 import com.example.demo.servicios.TokenServicio;
 import com.example.demo.servicios.UsuarioServicio;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -93,6 +92,7 @@ public class UsuarioControlador {
     }
 
 /////Falta vista del usuario para vincular con este metodo   
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/editar-perfil")
     public String editarPerfil(HttpSession session, @RequestParam String id, ModelMap model) {
 
@@ -120,6 +120,7 @@ public class UsuarioControlador {
 
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @PostMapping("/actualizar-perfil")
     public String actualizarPerfil(ModelMap modelo, @RequestParam String id, HttpSession session, @RequestParam String nombre, @RequestParam String apellido,
             @RequestParam String email, @RequestParam String edad, @RequestParam String clave1, @RequestParam String clave2, @RequestParam MultipartFile archivo,
@@ -154,6 +155,7 @@ public class UsuarioControlador {
 
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/ver-perfil")
     public String verPerfil(HttpSession session, ModelMap modelo, @RequestParam String id) {
 

@@ -36,7 +36,7 @@
                                                         <p class="card-text" th:text="'Edad: '+${gato.edad}"></p>
                                                         <p class="card-text" th:text="'Raza: '+${gato.raza}"></p>
                                                         <a  th:if="${gato.usuario.id != session.usuariosession.id}" th:href="@{/gato/perfil}+'?id='+${gato.id}" class="btn btn-primary">Ver info del gatito</a>
-                                                        <p th:if="${gato.usuario.id == session.usuariosession.id}" class="card-text" th:text="'Este es su michi'"></p>
+                                                        <p th:if="${gato.usuario.id == session.usuariosession.id}" class="card-text"><b style="font-size: 25px; text-shadow: 1px 3px 0 black; color: blue">¡Este michi es suyo!</b></p>
                                                     </div>
                                                     </div>
                                                     </div>

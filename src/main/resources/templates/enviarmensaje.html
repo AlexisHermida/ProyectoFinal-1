@@ -31,7 +31,8 @@
                     <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="cuerpomensaje" th:value="${cuerpomensaje}" maxlength="150"></textarea>
                 </div>
-                <button type="submit">Enviar mensaje</button>
+               <a th:href="@{/mensaje/bandeja-mensajes(idusuario=__${session.usuariosession.id}__)}" class="btn btn-light btn-outline-dark" style="padding: 10px; width: 120px; margin-top: 5px">Volver</a>
+               <button type="submit" class="btn-success" style="padding: 12px">Enviar mensaje</button>
             </form>  
         </div>
 
