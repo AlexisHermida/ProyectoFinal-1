@@ -140,8 +140,8 @@ public class UsuarioControlador {
             usuarioServicio.modificar(archivo, sexo, username, id, nombre, edad, numero, apellido, email, clave1, clave2, idLocalidad);
 
             session.setAttribute("usuariosession", usuario);
-            modelo.put("titulo", "Perfil Actualizado!!");
-            modelo.put("descripcion", "cambios guardados con exito!!!");
+            modelo.put("titulo", "¡Perfil Actualizado!");
+            modelo.put("descripcion", "¡Cambios guardados con exito!");
             return "exito.html";
         } catch (ErrorServicio e) {
             List<Localidad> localidades = localidadServicio.listarLocalidades();
