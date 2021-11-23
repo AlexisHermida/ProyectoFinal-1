@@ -12,7 +12,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-        <title>Registro</title>
+        <title>Ver perfil</title>
 
     </head>
 
@@ -38,6 +38,7 @@
 
                 <div class="col-6 col-sm-5 contenido-registro">
                     <form class="box" enctype="multipart/form-data" style="margin-top: 15%">
+                        <h1 style="font-size: 60px; color: white;">DATOS PERSONALES</h1>
                         <input type="hidden" name="id" th:value="${perfil.id}">
 
                         <input type="text" name="nombre" placeholder="Nombre" maxlength="20" th:value="${perfil.nombre}" class="input" th:disabled="${session.usuariosession != null}"><br> 

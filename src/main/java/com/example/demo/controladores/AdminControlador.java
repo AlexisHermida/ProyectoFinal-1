@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+
 @Controller
 @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 @RequestMapping("/admin")
