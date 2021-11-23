@@ -68,7 +68,7 @@ public class PortalControlador {
             usuarioServicio.registrar(archivo, sexo, username, nombre, edad, numero, apellido, email, clave1, clave2, idLocalidad);
             modelo.addAttribute("titulo", "¡Felicidades!");
             modelo.addAttribute("descripcion", "Se ha registrado correctamente en nuestra página");
-            return "exito.html";
+            return "registroexitoso.html";
 
         } catch (ErrorServicio e) {
             List<Localidad> localidades = localidadServicio.listarLocalidades();
